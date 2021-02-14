@@ -1,0 +1,28 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="./js/index_03.js" defer></script>
+    <title>템플릿 문법</title>
+  </head>
+  <body>
+    <pre>
+      데이터 바인딩의 가장 기본적인 형태는 Mustache 구문임 {{}} (이중 괄호)
+    </pre>
+
+    <span>메시지: {{ msg }}</span>
+
+    <pre>
+      Mustache 태그는 해당 데이터 객체의 msg 속성 값으로 대체.
+      데이터 객체의 msg 속성이 변경될 때 마다 갱신됨.
+    </pre>
+
+    <span v-once>다시는 변경하지 않습니다: {{ msg }}</span>
+  </body>
+</html>
