@@ -1,0 +1,92 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="./js/index_03.js" defer></script>
+    <title>템플릿 문법</title>
+  </head>
+  <body>
+    <h3>데이터 바인딩</h3>
+    <p class="inner-p">데이터 바인딩의 가장 기본적인 형태는 Mustache 구문임 {{}} (이중 괄호)</p>
+    <div id="app-1">
+      <span>메시지: {{ msg }}</span>
+    </div>
+    <p class="inner-p">
+      Mustache 태그는 해당 데이터 객체의 msg 속성 값으로 대체.
+      <br />
+      데이터 객체의 msg 속성이 변경될 때 마다 갱신됨.
+    </p>
+    <hr />
+
+    <h3>v-once</h3>
+    <p class="inner-p">
+      v-once 를 사용하여 데이터 변경 시 업데이트 되지 않는 일회성 보간 수행.
+      <br />
+      그러나 같은 노드의 바인딩에도 영향을 끼침
+    </p>
+    <div id="app-2">
+      <span v-once>
+        다시는 변경하지 않습니다: {{ msg }} 음 역시 아래꺼는 변경 된다.
+        <br />
+        하지만 같은 노드의 여기서는 ? {{ test }}
+      </span>
+      <br />
+      <span>이거는 변경이 되려나 같은 노드 아닌 거 같은데 {{ msg2 }} 어 된다</span>
+    </div>
+    <hr>
+
+    <div id='app-3'>
+      <h3>Mustaches</h3>
+      <p class="inner-p">
+        이중 괄호는 HTML이 아닌 일반 텍스트로 이해함.
+        <br />
+        실제 HTML 출력하려면 v-html 을 사용해야 함.
+      </p>
+
+      <p>Using mustaches: {{ rawHtml }}</p>
+      <p>
+        Using v-html directive:
+        <p v-html="rawHtml"></p>
+      </p>
+
+      <div>
+        <p>
+          Mustaches 는 HTML 속성에 사용할 수 없다.
+          <br>
+          대신 v-bind 디렉티브를 사용한다.
+        </p>
+        <div v-bind:id="dynamicId"></div>
+        <button v-bind:disabled="isButtonDisabled">Button</button>
+      </div>
+    </div>
+    <hr>
+
+    <div id='app-4'>
+      <h3>JavaScript 표현식 사용하기</h3>
+      <p class='inner-p'>
+        지금까지 템플릿의 간단한 속성 키에만 바인딩했습니다.
+        <br>
+        그러나 실제로 Vue.js는 모든 데이터 바인딩 내에서 JavaScript 표현식의 모든 기능을 지원합니다.
+      </p>
+      <div>{{ number + 1 }}</div>
+      <div>{{ ok ? 'YES' : 'NO' }}</div>
+      <div>{{ message.split('').reverse().join('') }}</div>
+      <div>
+        <div v-bind:id="'list-' + id"></div>
+      </div>
+      <p class="inner-p">
+        표현식은 Vue 인스턴스 데이터 범위 내에서 JavaScript로 계산.
+        <br>
+        제한사항은 각 바인딩에 하나의 단일 표현식 만 포함될 수 있다.
+        <br>
+        조건문은 작동하지 않는다. 삼항 연산자를 사용해야 한다.
+      </p>
+    </div>
+  </body>
+</html>
